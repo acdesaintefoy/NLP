@@ -79,3 +79,6 @@ def extract_features(query):
 # A function fo generating the list of labels for each query
 def get_entities(query):
     return [word['entity'] for word in query]
+
+def extract_words_from_X(X):
+    return [features[1].replace('word.lower=','')for features in X]
