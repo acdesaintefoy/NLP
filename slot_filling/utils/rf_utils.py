@@ -33,6 +33,7 @@ def alternative_data_base(data):
 #Rajouter une fonction pour le nombre de majuscule par exemple
 def word2features(query, i):
     word = query[i]['text']
+    sentence = ' '.join([element["text"] for element in query])
 
     # Common features for all words
     features = [
@@ -67,9 +68,8 @@ def word2features(query, i):
             '+1:word.istitle=%s' % word1.istitle(),
             '+1:word.isdigit=%s' % word1.isdigit()
         ])
-    #else:
-        # Indicate that it is the 'end of a query'
-        #features.append('EOS')
+
+    features.append(sentence)
     return features
 
 # A function for extracting features in queries
